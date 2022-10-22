@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites name="Mocha Tests" time="2.4240" tests="3" failures="0">
+  <testsuite name="" timestamp="2022-10-21T16:29:06" tests="0" file="cypress/unit/shared/Timeline/Timeline.spec.js" time="0.0000" failures="0">
+  </testsuite>
+  <testsuite name="Root Suite#Progress timeline" timestamp="2022-10-21T16:29:06" tests="3" time="2.4210" failures="0">
+    <testcase name="Should works and render noting without props" time="0.0130" classname="Progress timeline Should works and render noting without props">
+    </testcase>
+    <testcase name="Should render proper amount of groups and correct tooltips" time="1.1880" classname="Progress timeline Should render proper amount of groups and correct tooltips">
+    </testcase>
+    <testcase name="Carousel should render proper amount of groups, correct tooltips and pagination buttons" time="1.2030" classname="Progress timeline Carousel should render proper amount of groups, correct tooltips and pagination buttons">
+    </testcase>
+  </testsuite>
+</testsuites><?xml version="1.0" encoding="UTF-8"?>
+<testsuites name="Mocha Tests" time="1.6250" tests="4" failures="0">
+  <testsuite name="" timestamp="2022-10-21T16:29:04" tests="0" file="cypress/unit/shared/TextareaParser/TextareaParser.spec.js" time="0.0000" failures="0">
+  </testsuite>
+  <testsuite name="Root Suite#Textarea parser" timestamp="2022-10-21T16:29:04" tests="4" time="1.6220" failures="0">
+    <testcase name="Should work with only placeholder prop" time="0.0230" classname="Textarea parser Should work with only placeholder prop">
+    </testcase>
+    <testcase name="Should be able to parse text using regex and allow to edit" time="0.4180" classname="Textarea parser Should be able to parse text using regex and allow to edit">
+    </testcase>
+    <testcase name="Should support custom replacer and parsing by enter key press" time="0.5800" classname="Textarea parser Should support custom replacer and parsing by enter key press">
+    </testcase>
+    <testcase name="Should support custom regex and cut part of text" time="0.5780" classname="Textarea parser Should support custom regex and cut part of text">
+    </testcase>
+  </testsuite>
+</testsuites><?xml version="1.0" encoding="UTF-8"?>
+<testsuites name="Mocha Tests" time="1.0490" tests="2" failures="0">
+  <testsuite name="" timestamp="2022-10-21T16:29:03" tests="0" file="cypress/unit/shared/TablePage/TablePage.spec.js" time="0.0000" failures="0">
+  </testsuite>
+  <testsuite name="Root Suite#Table page" timestamp="2022-10-21T16:29:03" tests="2" time="1.0440" failures="0">
+    <testcase name="Should have correct date formatting" time="0.4890" classname="Table page Should have correct date formatting">
+    </testcase>
+    <testcase name="Pagination works" time="0.5280" classname="Table page Pagination works">
+    </testcase>
+  </testsuite>
+</testsuites><?xml version="1.0" encoding="UTF-8"?>
+<testsuites name="Mocha Tests" time="0.0000" tests="0" failures="0">
+</testsuites><?xml version="1.0" encoding="UTF-8"?>
+<testsuites name="Mocha Tests" time="0.0010" tests="0" failures="0">
+</testsuites><?xml version="1.0" encoding="UTF-8"?>
+<testsuites name="Mocha Tests" time="0.0030" tests="0" failures="0">
+</testsuites>

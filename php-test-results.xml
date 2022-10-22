@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites>
+  <testsuite name="" tests="1759" assertions="24973" errors="0" warnings="1" failures="0" skipped="9" time="1234.234097">
+    <testsuite name="unit-test-suite" tests="1759" assertions="24973" errors="0" warnings="1" failures="0" skipped="9" time="1234.234097">
+      <testsuite name="Tests\AppBundle\Helper\StringHelperTest" file="/builds/tests/AppBundle/Helper/StringHelperTest.php" tests="1" assertions="1" errors="0" warnings="0" failures="0" skipped="0" time="0.000593">
+        <testcase name="testUpperCaseSentence" class="Tests\AppBundle\Helper\StringHelperTest" classname="Tests.AppBundle.Helper.StringHelperTest" file="/builds/tests/AppBundle/Helper/StringHelperTest.php" line="25" assertions="1" time="0.000593"/>
+      </testsuite>
+    </testsuite>
+  </testsuite>
+</testsuites>
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites>
+  <testsuite name="" tests="18" assertions="318" errors="0" warnings="3" failures="0" skipped="0" time="69.354437">
+    <testsuite name="integration-test-suite" tests="18" assertions="318" errors="0" warnings="3" failures="0" skipped="0" time="69.354437">
+      <testsuite name="Tests\AppBundle\Mailer\SendTest" file="/builds/tests/AppBundle/Mailer/SendTest.php" tests="1" assertions="2" errors="0" warnings="0" failures="0" skipped="0" time="0.567496">
+        <testcase name="testSending" class="Tests\AppBundle\Mailer\SendTest" classname="Tests.AppBundle.Mailer.SendTest" file="/builds/tests/AppBundle/Mailer/SendTest.php" line="38" assertions="2" time="0.567496"/>
+      </testsuite>
+    </testsuite>
+  </testsuite>
+</testsuites>
