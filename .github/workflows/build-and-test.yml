@@ -43,9 +43,9 @@ jobs:
       uses: elgohr/Github-Release-Action@v4
       env:
         GITHUB_TOKEN: ${{ secrets.ACCESS_TOKEN }}
-        INPUT_TITLE: ${{ env.GITHUB_SHA }}
+        INPUT_TITLE: ${{ github.sha }}
       with:
-        title: ${{ env.GITHUB_SHA }}
+        title: ${{ github.sha }}
 
     - name: Release
       if: github.ref == 'refs/heads/main'
@@ -57,5 +57,5 @@ jobs:
         github_token: ${{ secrets.ACCESS_TOKEN }}
         goos: ${{ matrix.goos }}
         goarch: ${{ matrix.goarch }}
-        release_tag: ${{ env.GITHUB_SHA }}
+        release_tag: ${{ github.sha }}
         extra_files: LICENSE README.md
