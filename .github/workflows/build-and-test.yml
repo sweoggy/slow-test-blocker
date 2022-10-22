@@ -35,18 +35,25 @@ jobs:
     - name: Install
       run: go install github.com/sweoggy/slow-test-blocker/src
       env:
-        GOAMD64: v3
+        GOAMD64: v2
 
     - name: Test
       run: go test -v ./src
 
+    - name: Create a Release
+      uses: elgohr/Github-Release-Action@v4
+      env:
+        GITHUB_TOKEN: ${{ secrets.ACCESS_TOKEN }}
+
     - name: Release
       if: github.ref == 'refs/heads/main'
       uses: wangyoucao577/go-release-action@v1.32
+      env:
+        GOAMD64: v2
       with:
         project_path: ./src
         github_token: ${{ secrets.ACCESS_TOKEN }}
         goos: ${{ matrix.goos }}
         goarch: ${{ matrix.goarch }}
-        release_tag: ${GITHUB_SHA}
+        release_tag: ${{ env.GITHUB_SHA }}
         extra_files: LICENSE README.md
