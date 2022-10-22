@@ -5,8 +5,6 @@ name: Build and test
 
 on:
   push:
-    branches:
-      - main
   pull_request:
 
 jobs:
@@ -41,9 +39,12 @@ jobs:
       run: go test -v ./src
 
     - name: Create a Release
+      if: github.ref == 'refs/heads/main'
       uses: elgohr/Github-Release-Action@v4
       env:
         GITHUB_TOKEN: ${{ secrets.ACCESS_TOKEN }}
+      with:
+        release_tag: ${{ env.GITHUB_SHA }}
 
     - name: Release
       if: github.ref == 'refs/heads/main'
