@@ -44,7 +44,7 @@ jobs:
       env:
         GITHUB_TOKEN: ${{ secrets.ACCESS_TOKEN }}
       with:
-        release_tag: ${{ env.GITHUB_SHA }}
+        title: ${{ env.GITHUB_SHA }}
 
     - name: Release
       if: github.ref == 'refs/heads/main'
