@@ -19,3 +19,6 @@ vendor/
 
 # Go workspace file
 go.work
+
+# Ignore baseline file
+slow-test-blocker.baseline.json
