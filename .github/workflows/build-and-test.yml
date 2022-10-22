@@ -43,6 +43,7 @@ jobs:
       uses: elgohr/Github-Release-Action@v4
       env:
         GITHUB_TOKEN: ${{ secrets.ACCESS_TOKEN }}
+        INPUT_TITLE: ${{ env.GITHUB_SHA }}
       with:
         title: ${{ env.GITHUB_SHA }}
 
