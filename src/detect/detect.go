@@ -21,7 +21,7 @@ type BaselineEntry struct {
 	TestTime     int64  `json:"test_time"`
 }
 
-func DetectTooSlow(cliContext *cli.Context, generateBaseline bool) error {
+func DetectTooSlowUsingArgumentAndFlags(cliContext *cli.Context, generateBaseline bool) error {
 	maxDuration := cliContext.Duration("max-duration")
 	if maxDuration == 0 {
 		return cli.Exit("Max duration was set to 0, no analyze needed", 5)
@@ -29,16 +29,6 @@ func DetectTooSlow(cliContext *cli.Context, generateBaseline bool) error {
 	baselinePath := cliContext.String("baseline-path")
 	if baselinePath == "" {
 		return cli.Exit("You must specify a non-empty path to base line file", 5)
-	}
-
-	var testsToIgnore BaselineEntries
-	if !generateBaseline {
-		baselineFile, err := os.ReadFile(baselinePath)
-		if err != nil {
-			return cli.Exit(fmt.Sprintf("Failed to read baseline file: %s", err), 2)
-		}
-
-		json.Unmarshal(baselineFile, &testsToIgnore)
 	}
 
 	reportFile, err := os.ReadFile(cliContext.Args().First())
@@ -49,6 +39,20 @@ func DetectTooSlow(cliContext *cli.Context, generateBaseline bool) error {
 	reportContent, err := xmlquery.Parse(strings.NewReader(string(reportFile)))
 	if err != nil {
 		return cli.Exit(fmt.Sprintf("Failed to parse report file as XML %s", err), 3)
+	}
+
+	return DetectTooSlow(reportContent, maxDuration, generateBaseline, baselinePath)
+}
+
+func DetectTooSlow(reportContent *xmlquery.Node, maxDuration time.Duration, generateBaseline bool, baselinePath string) error {
+	var testsToIgnore BaselineEntries
+	if !generateBaseline {
+		baselineFile, err := os.ReadFile(baselinePath)
+		if err != nil {
+			return cli.Exit(fmt.Sprintf("Failed to read baseline file: %s", err), 2)
+		}
+
+		json.Unmarshal(baselineFile, &testsToIgnore)
 	}
 
 	testCases, err := xmlquery.QueryAll(reportContent, "//testcase")

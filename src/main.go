@@ -21,7 +21,7 @@ func main() {
 				Usage:     "Analyze a JUnit report for slow tests",
 				ArgsUsage: "[report.xml]",
 				Action: func(cliContext *cli.Context) error {
-					return detect.DetectTooSlow(cliContext, false)
+					return detect.DetectTooSlowUsingArgumentAndFlags(cliContext, false)
 				},
 				Flags: analyzeFlags,
 			},
@@ -30,7 +30,7 @@ func main() {
 				Usage:     "Generate a baseline for tests ",
 				ArgsUsage: "[report.xml]",
 				Action: func(cliContext *cli.Context) error {
-					return detect.DetectTooSlow(cliContext, true)
+					return detect.DetectTooSlowUsingArgumentAndFlags(cliContext, true)
 				},
 				Flags: analyzeFlags,
 			},

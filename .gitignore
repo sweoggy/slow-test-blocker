@@ -20,5 +20,5 @@ vendor/
 # Go workspace file
 go.work
 
-# Ignore baseline file
-slow-test-blocker.baseline.json
+# Ignore baseline files
+slow-test-blocker.*baseline.json

@@ -5,19 +5,17 @@ name: Build and test
 
 on:
   push:
-    branches: [ $default-branch ]
   pull_request:
-    branches: [ $default-branch ]
+
+env:
+  GOAMD64: v2
 
 jobs:
-
-  build:
+  test:
     runs-on: ubuntu-latest
     strategy:
       matrix:
         go-version: [ '1.19' ]
-        goos: [linux, windows]
-        goarch: [amd64, arm64]
 
     steps:
     - uses: actions/checkout@v3
@@ -30,23 +28,40 @@ jobs:
 
     - name: Install dependencies
       run: |
-        go get .
-
-    - name: Build
-      run: go build -v ./src
-      env:
-        GOAMD64: v3
+        go mod download
+        go install github.com/sweoggy/slow-test-blocker/src
 
     - name: Test
-      run: go test -v ./src
+      run: go test -v ./...
 
-    - name: Release
+    - name: Create a Release
+      id: release_step
       if: github.ref == 'refs/heads/main'
-      uses: wangyoucao577/go-release-action@v1.32
+      uses: marvinpinto/action-automatic-releases@latest
       with:
-        project_path: ./src
-        github_token: ${{ secrets.ACCESS_TOKEN }}
-        goos: ${{ matrix.goos }}
-        goarch: ${{ matrix.goarch }}
-        release_tag: ${{ $env:GITHUB_SHA }}
-        extra_files: LICENSE README.md
+        repo_token: ${{ secrets.ACCESS_TOKEN }}
+        automatic_release_tag: latest
+        title: ${{ github.sha }}
+
+  release:
+    needs: test
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        go-version: [ '1.19' ]
+        goos: [linux, windows]
+        goarch: [amd64, arm64]
+
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Release
+        if: github.ref == 'refs/heads/main'
+        uses: wangyoucao577/go-release-action@v1.32
+        with:
+          project_path: ./src
+          github_token: ${{ secrets.ACCESS_TOKEN }}
+          goos: ${{ matrix.goos }}
+          goarch: ${{ matrix.goarch }}
+          release_tag: latest
+          extra_files: LICENSE README.md
